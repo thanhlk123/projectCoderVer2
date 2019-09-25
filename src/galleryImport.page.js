@@ -10,7 +10,6 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 
 import styles1 from './styles';
-
 class GalleryImportPage extends React.Component {
     //   const { id, status, body } = props.navigation.state.params.updatedTodo;
     state = {
@@ -28,8 +27,29 @@ class GalleryImportPage extends React.Component {
         },
         send :  false
     };
+    componentWillMount=() => {
+        const { navigation } = this.props;
+        var Param = navigation.getParam('dataSubmit',"no data");
+        var arrBase64;
+        var arrUrl;
+        // for(let i=0;i<3; i++){
+        // ImgToBase64.getBase64String(Param[i].uri)
+        //     .then(base64String => {arrBase64=[base64String, ...arrBase64];
+        //                            arrUrl=[Param[i].uri, ...arrUrl]})
+        //     .catch(err => console.log(err));
+        // }
+        
+        
+        
 
+        
+        
+
+
+     }
     render() {
+        
+
         let { image1, image2 , send} = this.state;
 
         return (

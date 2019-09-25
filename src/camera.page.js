@@ -9,6 +9,7 @@ import styles from './styles';
 import Popup from './popup';
 import ScanPreview from './scanPreview';
 import ImageZoom from 'react-native-image-pan-zoom';
+import GalleryImportPage from './galleryImport.page'
 
 import imageScreen from './imageScreen';
 import { createAppContainer } from 'react-navigation';
@@ -50,9 +51,9 @@ class CameraPage extends React.Component  {
           sec = new Date().getSeconds(); 
         date = date + '/' + month + '/' + year + ' ' + hours + ':' + min + ':' + sec;
         data={"uri":this.state.uri,"date":date}
-        console.log(this.state.captures.length)
-        if (this.state.captures.length==2){
-          this.props.navigation.navigate('work',{'uri':this.state.uri})
+        if (this.state.captures.length>=2){
+          dataSubmit = [data, ...this.state.captures]
+          this.props.navigation.navigate('CommitScreen',{'dataSubmit':dataSubmit})
         }
         if (this.state.captures.length==1){
           this.setState ({
@@ -213,8 +214,8 @@ const AppNavigator = createStackNavigator(
         }
       },
       images: imageScreen,
-      work:{
-        screen: workScreen,
+      CommitScreen:{
+        screen: GalleryImportPage,
         navigationOptions: {
           header:null,
           headerVisible: false,
